@@ -14,7 +14,7 @@ public class EmployeOrdinaire extends Employe {
 
     @Override
     public double getSalaireBrut() {
-        return getSalaireBrut() + getEchelonEmp() * 100;
+        return super.getSalaireBrut() + getEchelonEmp() * 100;
     }
 
 }
