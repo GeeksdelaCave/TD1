@@ -12,7 +12,6 @@ public class Commercial extends Employe {
 
     public Commercial (int numEmp, String nomEmp, String prenomEmp, LocalDate dateNaissEmp) {
         super(numEmp, nomEmp, prenomEmp, dateNaissEmp);
-
     }
 
     public void setChiffreAffaires(double chiffreAffaires) {
@@ -23,6 +22,7 @@ public class Commercial extends Employe {
         this.tauxCommission = tauxCommission;
     }
 
+    @Override
     public double getSalaireBrut() {
         return getBase() + chiffreAffaires * tauxCommission;
     }
