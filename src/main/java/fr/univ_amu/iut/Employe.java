@@ -9,11 +9,6 @@ import java.time.LocalDate;
 public class Employe {
 
     private int numEmp;
-
-    public int getEchelonEmp() {
-        return echelonEmp;
-    }
-
     private String nomEmp;
     private String prenomEmp;
     private int echelonEmp;
@@ -21,7 +16,6 @@ public class Employe {
     private LocalDate dateEmbEmp;
     private double base;
     private double nbHeures;
-
     public Employe(int numEmp, String nomEmp, String prenomEmp, LocalDate dateNaissEmp) {
         this.numEmp = numEmp;
         this.nomEmp = nomEmp;
@@ -29,16 +23,24 @@ public class Employe {
         this.dateNaissEmp = dateNaissEmp;
     }
 
+    public int getEchelonEmp() {
+        return echelonEmp;
+    }
+
     public void setEchelonEmp(int echelonEmp) {
         this.echelonEmp = echelonEmp;
     }
 
-    public void setDateEmbEmp(LocalDate dateEmbEmp) {
-        this.dateEmbEmp = dateEmbEmp;
+    public double getBase() {
+        return base;
     }
 
     public void setBase(double base) {
         this.base = base;
+    }
+
+    public void setDateEmbEmp(LocalDate dateEmbEmp) {
+        this.dateEmbEmp = dateEmbEmp;
     }
 
     public void setNbHeures(double nbHeures) {
