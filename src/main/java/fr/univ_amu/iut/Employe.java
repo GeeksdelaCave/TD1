@@ -1,71 +1,86 @@
 package fr.univ_amu.iut;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
+ * @brief Interface Employe
  * @author Tristan Dietz
+ * @class Employe
+ * @file Employe.java
  */
 
-public class Employe {
+public abstract class Employe implements Serializable
+{
+    /**
+     * Données membres
+     */
+    protected int numero;
+    protected String nom;
+    protected String prenom;
+    protected int echelon;
+    protected LocalDate dateDeNaissance;
+    protected LocalDate dateDEmbauche;
+    protected double base;
+    protected double nbHeures;
+    protected double bonus;
 
-    private int numEmp;
-    private String nomEmp;
-    private String prenomEmp;
-    private int echelonEmp;
-    private LocalDate dateNaissEmp;
-    private LocalDate dateEmbEmp;
-    private double base;
-    private double nbHeures;
-    public Employe(int numEmp, String nomEmp, String prenomEmp, LocalDate dateNaissEmp) {
-        this.numEmp = numEmp;
-        this.nomEmp = nomEmp;
-        this.prenomEmp = prenomEmp;
-        this.dateNaissEmp = dateNaissEmp;
-    }
-
-    public int getEchelonEmp() {
-        return echelonEmp;
-    }
-
-    public void setEchelonEmp(int echelonEmp) {
-        this.echelonEmp = echelonEmp;
-    }
-
-    public double getBase() {
-        return base;
-    }
-
-    public void setBase(double base) {
+    /**
+     * Constructeur de l'interfae Employe
+     * @param numero Identifiant unique pour chaque Employe
+     * @param nom Nom de l'employé
+     * @param prenom Prénom de l'employé
+     * @param echelon Échelon de l'employé
+     * @param dateDeNaissance Date de naissance de l'employé
+     * @param dateDEmbauche Date d'embauche de l'employé
+     * @param base Base de paye de l'employé
+     * @param nbHeures Nombre d'heures de l'employé
+     */
+    public Employe(int numero, String nom, String prenom, int echelon, LocalDate dateDeNaissance, LocalDate dateDEmbauche, double base, double nbHeures) {
+        this.numero = numero;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.echelon= echelon;
+        this.dateDeNaissance = dateDeNaissance;
+        this.dateDEmbauche = dateDEmbauche;
         this.base = base;
-    }
-
-    public void setDateEmbEmp(LocalDate dateEmbEmp) {
-        this.dateEmbEmp = dateEmbEmp;
-    }
-
-    public void setNbHeures(double nbHeures) {
         this.nbHeures = nbHeures;
     }
 
-    public double getSalaireBrut() {
-        return base * nbHeures;
-    }
+    /**
+     * Accesseur du salaire brut
+     * @return Retourne le salaire brut
+     */
+    public double getSalaireBrut(){return base*nbHeures;}
+
+    /**
+     * Accesseur du salaire net
+     * @return Retourne le salaire net
+     */
+    public double getSalaireNet(){return getSalaireBrut()*0.8;}
 
     @Override
     public String toString() {
-        return "Employe{" +
-                "numEmp=" + numEmp +
-                ", nomEmp='" + nomEmp + '\'' +
-                ", prenomEmp='" + prenomEmp + '\'' +
-                ", echelonEmp=" + echelonEmp +
-                ", dateNaissEmp=" + dateNaissEmp +
-                ", dateEmbEmp=" + dateEmbEmp +
-                ", base=" + base +
-                ", nbHeures=" + nbHeures +
-                '}';
+        return "Employe [numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", echelon=" + echelon
+                + ", dateDeNaissance=" + dateDeNaissance + ", dateDEmbauche=" + dateDEmbauche + ", base=" + base
+                + ", nbHeures=" + nbHeures + ", bonus=" + bonus + "]";
     }
 
-    public double getSalaireNet() {
-        return getSalaireBrut() * 80 / 100;
+    /**
+     * Accesseur de l'ancienneté
+     * @return Retourne l'ancienneté
+     */
+    public Long getAnciennete() {
+        return ChronoUnit.MONTHS.between(dateDEmbauche, LocalDate.now());
     }
+
+    /**
+     * Définit le bonus de l'employé
+     * @param bonus
+     */
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
 }

@@ -13,13 +13,9 @@ public class TestTechnicien {
 
     @Test
     public void testSalaireBrut() {
-        Technicien emp = new Technicien(1789, "Lepen", "Jean-Marie", LocalDate.now());
-        emp.setBase(2);
-        emp.setNbHeures(35);
-        emp.setNbUnitesProduites(5);
-        emp.setTauxCommissionUnite(1.3);
+        Technicien emp = new Technicien(1239, "Mars", "Bruno", 1245, LocalDate.now(), LocalDate.now(), 5.0, 36);
 
-        assertTrue (emp.getSalaireBrut() == 76.5);
+        assertTrue (emp.getSalaireBrut() == 180.0);
     }
 
 }
