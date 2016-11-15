@@ -25,7 +25,6 @@ public class EmployeOrdinaire extends Employe
     public EmployeOrdinaire(int numero, String nom, String prenom, int echelon, LocalDate dateDeNaissance,
                             LocalDate dateDEmbauche, double base, double nbHeures) {
         super(numero, nom, prenom, echelon, dateDeNaissance, dateDEmbauche, base, nbHeures);
-        // TODO Auto-generated constructor stub
     }
 
     /**
